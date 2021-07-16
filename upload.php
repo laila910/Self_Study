@@ -1,4 +1,7 @@
 <?php
+require 'db.inc.php';
+session_start();
+$id = $_SESSION['id'];
 //upload file or images to a website in php 
 if(isset($_POST['submit'])){
     $file = $_FILES['file'];
@@ -17,9 +20,12 @@ if(isset($_POST['submit'])){
     if(in_array($finalfileExtension,$ExtensionAllowed)){
         if($fileError === 0 ){
             if($fileSize < 500000000 ){ //500megabyte = 500000 Kbyte
-              $fileNameNew = uniqid('',true).".".$finalfileExtension;
+            //   $fileNameNew = uniqid('',true).".".$finalfileExtension;
+              $fileNameNew = "profile".$id.".".$finalfileExtension;
               $fileDestination ='uploads/'.$fileNameNew;
               move_uploaded_file($fileTmpName,$fileDestination);
+              $sql="UPDATE profileimg SET status=0 where userid='$id';";
+              $result=mysqli_query($conn,$sql);
               header('Location: index.php?uploadsuccess');
             }else{
                 echo 'your file is too big';
