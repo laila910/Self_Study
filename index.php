@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require "db.inc.php";
 ?><!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -21,38 +21,72 @@ require "db.inc.php";
         <![endif]-->
         <?php 
       //inserting database results in an array 
-        $sql = "SELECT  * From users ;";
-        $result= mysqli_query($conn,$sql);
-        $data = array();
-        if(mysqli_num_rows($result)>0){
-          while($row = mysqli_fetch_assoc($result)){
-              $data[]=$row; // return associative arrays ,every row is an associative array
 
-          }
+        // $sql = "SELECT  * From users ;";
+        // $result= mysqli_query($conn,$sql);
+        // $data = array();
+        // if(mysqli_num_rows($result)>0){
+        //   while($row = mysqli_fetch_assoc($result)){
+        //       $data[]=$row; // return associative arrays ,every row is an associative array
 
-        }
+        //   }
+
+        // }
+
+
         // print_r( $data); 
 
         // foreach($data as $value){
         //      print_r($value);//if i used echo(); that's not work 
         // }
 
-       foreach($data[0] as $value){  // that is print the first row in the database 
-         echo $value.'<br>';
-       }
+    //    foreach($data[0] as $value){  // that is print the first row in the database 
+    //      echo $value.'<br>';
+    //    }
         
-       foreach($data as $value){ // that is print the column 
-               echo $value['uidUsers'].'<br>';
-       }
+    //    foreach($data as $value){ // that is print the column 
+    //            echo $value['uidUsers'].'<br>';
+    //    }
        
         
  ?>
-        <form action="upload.php " method="post" enctype="multipart/form-data"> 
+ <?php
+  if( isset($_SESSION['id'])){
+      if($_SESSION['id'] ==1 ){
+         echo"you are logged in as user #1";
+
+      }
+      echo'<form action="upload.php " method="post" enctype="multipart/form-data"> 
           <input type="file" name="file">
           <button type="submit" name="submit">Upload </button>
+        </form>';
+  }else{
+     echo"you are not logged in !";
+     echo '<form action="login.php " method="post" enctype="multipart/form-data">
+               <input type="text" name="first" placeholder="please enter your first name">
+               <input type="text" name="last" placeholder="please enter your last name">
+               <input type="text" name="username" placeholder="please enter your user name">
+               <input type="text" name="password" placeholder="please enter your password">
+               <button type="submit" name="submitSignup">SignUp</button>
+     </form>';
+ }
 
 
 
+
+?>
+       
+          
+        <p>Login as User!</p>
+        <form action="login.php " method="post" enctype="multipart/form-data"> 
+         
+          <button type="submit" name="submitLogin">Login</button>
+        </form>
+
+          <p>Login as User!</p>
+          <form action="logout.php " method="post" enctype="multipart/form-data"> 
+          
+          <button type="submit" name="submitLogout">Logout</button>
         </form>
         <script src="" async defer></script>
     </body>
