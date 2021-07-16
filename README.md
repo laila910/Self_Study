@@ -5,11 +5,11 @@ some test using php and mysqli
 ```php 
   Inserting Database Results(Rows) in an array in php 
 ```
-##Second 
+## Second 
 ```php
   Upload File or Images to a Website in php 
 ```
-##Third
+## Third
 ```php
  Upload Profile Images to users who are login using PHP
 ```
