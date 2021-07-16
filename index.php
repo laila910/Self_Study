@@ -59,9 +59,9 @@ require "db.inc.php";
         $sqlImg = "SELECT * FROM profileimg where userid ='$id';";
         $resultImg = mysqli_query($conn,$sqlImg);
         while($rowImg = mysqli_fetch_assoc($resultImg)){
-            echo '<div>';
+            echo '<div width="500px" height="500px">';
               if($rowImg['status'] == 0){
-                 echo '<img src="uploads/profile'.$id.'.jpg">';
+                 echo "<img width='100px' height='100px' src='uploads/profile".$id.".jpg?'".mt_rand().">";
               }else{
                   echo '<img src="uploads/profiledefault.jpg">';
               }
@@ -86,7 +86,7 @@ require "db.inc.php";
         </form>';
   }else{
      echo"you are not logged in !";
-     echo '<form action="login.php " method="post" enctype="multipart/form-data">
+     echo '<form action="signup.php " method="post" enctype="multipart/form-data">
                <input type="text" name="first" placeholder="please enter your first name">
                <input type="text" name="last" placeholder="please enter your last name">
                <input type="text" name="username" placeholder="please enter your user name">
