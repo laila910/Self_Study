@@ -51,6 +51,30 @@ require "db.inc.php";
         
  ?>
  <?php
+ $sql ="SELECT * FROM user;";
+ $result = mysqli_query($conn,$sql);
+ if(mysqli_num_rows($result) >0 ){
+    while($row = mysqli_fetch_assoc($result)){
+        $id =$row['id'];
+        $sqlImg = "SELECT * FROM profileimg where userid ='$id';";
+        $resultImg = mysqli_query($conn,$sqlImg);
+        while($rowImg = mysqli_fetch_assoc($resultImg)){
+            echo '<div>';
+              if($rowImg['status'] == 0){
+                 echo '<img src="uploads/profile'.$id.'.jpg">';
+              }else{
+                  echo '<img src="uploads/profiledefault.jpg">';
+              }
+              echo $row['username'];
+
+            echo'</div>';
+        }
+    }
+
+ }else{
+
+    echo 'there are no users yet!';
+ }
   if( isset($_SESSION['id'])){
       if($_SESSION['id'] ==1 ){
          echo"you are logged in as user #1";
