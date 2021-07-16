@@ -2,7 +2,8 @@
 $servername='localhost';
 $dbusername='root';
 $dbpassword='';
-$dbname='loginsystem';
+// $dbname='loginsystem';
+$dbname='imgupload';
 
 $conn = mysqli_connect($servername,$dbusername,$dbpassword,$dbname);
 
