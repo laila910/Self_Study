@@ -3,9 +3,9 @@ some test using php and mysqli
 
 ## First 
 ```php 
-inserting database results in an array 
+  Inserting database results in an array in php 
 ```
 ##Second 
 ```php
-upload file or images to a website in php 
+  Upload file or images to a website in php 
 ```
