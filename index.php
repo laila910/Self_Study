@@ -61,7 +61,7 @@ require "db.inc.php";
         while($rowImg = mysqli_fetch_assoc($resultImg)){
             echo '<div width="500px" height="500px">';
               if($rowImg['status'] == 0){
-                $filename="uploads/profile".$_SESSION['id']."*";
+                $filename="uploads/profile".$id."*";
                 $fileinfo=glob($filename);
                 $fileextension = explode('.',$fileinfo[0]);
                 $fileactualextension = $fileextension[1];
