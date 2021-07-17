@@ -84,6 +84,9 @@ require "db.inc.php";
           <input type="file" name="file">
           <button type="submit" name="submit">Upload </button>
         </form>';
+      echo'<form action="deleteprofile.php" method="post"> 
+          <button type="submit" name="submit">delete profile image </button>
+        </form>';
   }else{
      echo"you are not logged in !";
      echo '<form action="signup.php " method="post" enctype="multipart/form-data">
