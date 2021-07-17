@@ -61,7 +61,11 @@ require "db.inc.php";
         while($rowImg = mysqli_fetch_assoc($resultImg)){
             echo '<div width="500px" height="500px">';
               if($rowImg['status'] == 0){
-                 echo "<img width='100px' height='100px' src='uploads/profile".$id.".jpg?'".mt_rand().">";
+                $filename="uploads/profile".$_SESSION['id']."*";
+                $fileinfo=glob($filename);
+                $fileextension = explode('.',$fileinfo[0]);
+                $fileactualextension = $fileextension[1];
+                 echo "<img width='100px' height='100px' src='uploads/profile".$id.".".$fileactualextension."?".mt_rand()."'>";
               }else{
                   echo '<img src="uploads/profiledefault.jpg">';
               }
