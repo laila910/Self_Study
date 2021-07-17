@@ -23,3 +23,4 @@ if(!unlink($file)){
 
 $sql = "UPDATE profileimg SET status=1 where userid='$sessionid ';";
 mysqli_query($conn,$sql);
+header("Location: index.php?deletecomplete");
